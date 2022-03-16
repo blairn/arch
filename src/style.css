@@ -1,10 +1,10 @@
 body {
-  font-family: var(--font-sans);
-  line-height: var(--line-md);
-  background-color: var(--color-grey-800);
-  color: var(--color-blue-300)
+	font-family: var(--font-sans);
+	line-height: var(--line-md);
+	background-color: var(--color-grey-800);
+	color: var(--color-blue-300);
 }
 
 dialog {
-  backdrop-filter: var(--blur-md);
+	backdrop-filter: var(--blur-md);
 }

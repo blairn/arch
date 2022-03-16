@@ -1,6 +1,12 @@
 <script>
-  export let event
+	export let event;
+	export let isCurrent;
 </script>
-<pre>
-{JSON.stringify(event,null,2)}
-</pre>
+
+<pre class:current={isCurrent}>{JSON.stringify(event, null, 2)}</pre>
+
+<style>
+	.current {
+		background-color: blueviolet;
+	}
+</style>

@@ -1,10 +1,11 @@
 <script>
-  import './tree.css'
-  import EventTreeNode from './EventTreeNode.svelte'
-  export let node={}
+	import './tree.css';
+	import EventTreeNode from './EventTreeNode.svelte';
+	export let node = {};
 </script>
+
 <ul class="tree">
-  {#each node.children as child}
-    <EventTreeNode node={child} />
-  {/each}
+	{#each node.children as child}
+		<EventTreeNode node={child} />
+	{/each}
 </ul>
