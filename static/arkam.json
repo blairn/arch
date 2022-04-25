@@ -1,0 +1,17 @@
+[
+  {
+    "id": "NHI_11523434",
+    "timestamp": "2020-02-01T06:02:24Z",
+    "status": "inpatient",
+    "arkam_ward": "assessment"
+  },{
+    "id": "NHI_11523434",
+    "timestamp": "2020-02-01T16:45:00Z",
+    "arkam_ward": "enterprise architect"
+  },{
+    "id": "NHI_11523434",
+    "timestamp": "2020-02-08T09:45:00Z",
+    "status": "outpatient",
+    "arkam_ward": null
+  }
+]

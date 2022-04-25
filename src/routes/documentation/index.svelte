@@ -2,51 +2,42 @@
 	import EventTree from './_lib/EventTree.svelte';
 	import EventList from './_lib/EventList.svelte';
 	let events = [
-		{
-			patient_id: 'blair',
-			timestamp: '1973-05-16T02:24:00Z',
-			gender: 'male',
-			born: '1973-05-16T02:24:00Z'
-		},
-		{
-			patient_id: 'blair',
-			timestamp: '1973-05-16T02:26:00Z',
-			gender: 'male',
-			ward: 'neonatal',
-			status: 'inpatient'
-		},
-		{
-			patient_id: 'blair',
-			timestamp: '1973-05-16T12:05:00Z',
-			ward: null,
-			status: 'discharged'
-		},
-		{
-			patient_id: 'blair',
-			timestamp: '1991-07-20T17:10:00Z',
-			ward: 'ED',
-			status: 'ED'
-		},
-		{
-			patient_id: 'blair',
-			timestamp: '1991-07-20T18:30:00Z',
-			ward: 'neurology',
-			status: 'inpatient'
-		},
-		{
-			patient_id: 'john',
-			timestamp: '1991-07-20T18:30:00Z',
-			ward: 'neurology',
-			status: 'inpatient'
-		}
-	];
+		{"id":"NHI_11523434","timestamp":"2020-02-01T01:00:00Z","name":"Blair","dob":"1973-05-16T07:00:00Z","gender":"male","status":"inpatient","gotham_ward":"Ward_8"},
+		{"timestamp":"2020-02-01T04:00:00Z","gotham_ward":"Ward_2","id":"NHI_11523434"},
+		{"status":"transfer","gotham_ward":null,"id":"NHI_11523434","timestamp":"2020-02-01T04:45:00Z"},
+		{"id":"NHI_12523674","timestamp":"2020-02-01T01:15:00Z","name":"Kath","dob":"1976-10-02T07:00:00Z","gender":"female","status":"inpatient","gotham_ward":"Ward_12"},
+		{"timestamp":"2020-02-01T02:00:00Z","gotham_ward":"Ward_6","id":"NHI_12523674"},
+		{"timestamp":"2020-02-01T03:15:00Z","gotham_ward":"Ward_12","id":"NHI_12523674"},
+{
+    "id": "NHI_11523434",
+    "timestamp": "2020-02-01T06:02:24Z",
+    "status": "inpatient",
+    "arkam_ward": "assessment"
+  },{
+    "id": "NHI_11523434",
+    "timestamp": "2020-02-01T16:45:00Z",
+    "arkam_ward": "enterprise architect"
+  },{
+    "id": "NHI_11523434",
+    "timestamp": "2020-02-08T09:45:00Z",
+    "status": "outpatient",
+    "arkam_ward": null
+  }
+];
+
+	let shown = {}
+
+	let show = (d) => shown = d
+
+	let k=0;
+
 
 	let rootNode = { key: 'root', children: [], dirty: false };
 
 	const makeKey = (doc) => {
 		const date = new Date(doc.timestamp);
 		return [
-			doc.patient_id,
+			doc.id,
 			date.getUTCFullYear(),
 			date.getUTCMonth(),
 			date.getUTCDate(),
@@ -81,6 +72,7 @@
 			addRecord(child, keys, doc);
 			node.doc = reduce(node.children.map((x) => x.doc));
 		}
+		k++
 	};
 
 	let current_event = undefined;
@@ -116,10 +108,13 @@
 	</div>
 	<div class="main">
 		<h1>Tree</h1>
-		<EventTree node={rootNode} />
+		<EventTree {show} node={rootNode} />
 	</div>
 	<div>
 		<h1>Description</h1>
+		{#key k}
+		<pre>{JSON.stringify(shown.doc,null,2)}</pre>
+		{/key}
 	</div>
 </div>
 
